@@ -1,0 +1,31 @@
+/* Create table about the people and what they do here */
+CREATE TABLE authors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    yearswriting INTEGER);
+    
+CREATE TABLE books (
+    id INTEGER,
+    bookname TEXT);
+    
+INSERT INTO authors (name, yearswriting) VALUES ("Stephen King", 53);
+INSERT INTO authors (name, yearswriting) VALUES ("Dan Brown", 27);
+INSERT INTO authors (name, yearswriting) VALUES ("Veronica Roth", 11);
+
+
+
+INSERT INTO books (id, bookname) VALUES (1, "The Dark Tower");
+INSERT INTO books (id, bookname) VALUES (1, "Carrie");
+INSERT INTO books (id, bookname) VALUES (1, "Cujo");
+INSERT INTO books (id, bookname) VALUES (2, "Deception Point");
+INSERT INTO books (id, bookname) VALUES (2, "Digital Fortress");
+INSERT INTO books (id, bookname) VALUES (2, "Da Vinci Code");
+INSERT INTO books (id, bookname) VALUES (3, "Divergent");
+INSERT INTO books (id, bookname) VALUES (3, "Allegiant");
+INSERT INTO books (id, bookname) VALUES (3, "Insurgent");
+
+
+SELECT name, bookname 
+FROM authors
+JOIN books
+ON authors.id = books.id;
