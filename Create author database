@@ -25,7 +25,10 @@ INSERT INTO books (id, bookname) VALUES (3, "Allegiant");
 INSERT INTO books (id, bookname) VALUES (3, "Insurgent");
 
 
+--Pull all authors with associated books
 SELECT name, bookname 
 FROM authors
 JOIN books
 ON authors.id = books.id;
+
+
