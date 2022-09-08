@@ -1,0 +1,4 @@
+--What is the average danceability of all songs
+SELECT AVG(danceability)/(count(track_name)) as AverageDance
+FROM BIT_DB.Spotifydata
+
