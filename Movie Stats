@@ -1,4 +1,4 @@
-/* (PostgreSQL) examples */
+#In these SQL code, I'm answering questions about Netflix data. 
 
 --How many movie titles are there in the database? (movies only, not tv shows) 
 SELECT count(*) 
