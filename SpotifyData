@@ -41,3 +41,26 @@ ORDER BY Popularity DESC
 SELECT artist_name,  sum(speechiness) as TotalSpeechiness
 FROM BIT_DB.Spotifydata 
 GROUP BY artist_name
+
+
+--Calculate the average popularity for the artists in the table. Then, for every artist with an average popularity of 90 or above, you need to show their name, their average popularity, and label them as a “Top Star”. 
+#This was performed using common table expresion
+
+WITH CTE AS 
+(
+SELECT artist_name, ROUND(AVG(popularity),2) as Popularity
+FROM Spotifydata
+Group By artist_name
+)
+SELECT artist_name, popularity,
+case when popularity > 90 then "Top Star"
+Else popularity
+END popularity
+FROM CTE 
+
+
+
+
+
+
+
