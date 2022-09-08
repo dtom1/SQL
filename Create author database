@@ -1,4 +1,5 @@
-/* Create table about the people and what they do here */
+#For this project I created tables for authors and books and created a query to pull all the authors and associated books.
+
 CREATE TABLE authors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
