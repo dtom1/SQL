@@ -51,19 +51,37 @@ HAVING count(orderID)>2
 
 
 --How many of each type of headphone were sold in February?
-
+SELECT Product, SUM(Quantity) as Quantity
+FROM BIT_DB.FebSales 
+WHERE Product like '%Headphones%'
+Group By Product
 
 
 --What was the average amount spent per account in February? 
+SELECT SUM(Quantity*price)/count(T2.acctnum)
+FROM BIT_DB.FebSales T1
+LEFT JOIN BIT.DB.customers T2
+     ON T1.orderid = T2.order_id
+     
+SELECT AVG(Quantity*price)
+FROM BIT.DB.FebSales T1
+LEFT JOIN BIT_DB.customers T2
+     ON T1.orderid = T2.order_id
 
 
-
---What was the average quantity of products purchased per account in February? 
+--What was the average price of products purchased per account in February? 
+SELECT ROUND(AVG(Quantity*price),2)
+FROM BIT_DB.FebSales T1
+LEFT JOIN BIT_DB.customers T2
+  ON T1.orderid = T2.order_id
 
 
 
 --Which product brought in the most revenue in January and how much revenue did it bring in total?
-
+SELECT Product, Round(sum(quantity*price),2) as TotalRevenue
+FROM BIT_DB.JanSales 
+Group By Product
+Order By TotalRevenue desc
 
 
 
