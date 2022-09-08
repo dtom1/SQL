@@ -2,3 +2,10 @@
 SELECT AVG(danceability)/(count(track_name)) as AverageDance
 FROM BIT_DB.Spotifydata
 
+
+--What is the average popularity of each artist with more than one song in order of most popular
+SELECT artist_name, ROUND(AVG(popularity),2) as Popularity
+FROM BIT_DB.Spotifydata
+Group By artist_name
+HAVING count(artist_name)>1
+ORDER BY Popularity DESC
