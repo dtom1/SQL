@@ -17,7 +17,6 @@ ON T1.order_id=T2.orderid
 SELECT distinct Product, MIN(price)
 FROM JanSales
 
-
 --What is the total revenue for each product sold in January?
 SELECT product, sum(quantity)*price as revenue
 FROM JanSales
@@ -34,7 +33,9 @@ select
 count(T2.acctnum) as total_customers, 
 avg(quantity*price) as average_price_spent
 FROM FebSales T1
-
+LEFT JOIN customers T2
+ON T1.orderid=T2.order_id
+WHERE T1.Quantity>2
 
 --List all the products sold in Los Angeles in February, and include how many of each were sold.
 SELECT distinct Product, sum(Product) as Total_Sold
@@ -43,6 +44,3 @@ WHERE location like '%Los Angeles%'
 
 
 
-LEFT JOIN customers T2
-ON T1.orderid=T2.order_id
-WHERE T1.Quantity>2
