@@ -48,15 +48,14 @@ GROUP BY artist_name
 
 WITH CTE AS 
 (
-SELECT artist_name, ROUND(AVG(popularity),2) as Popularity
+SELECT artist_name, ROUND(AVG(popularity),2) as AvgPopularity
 FROM Spotifydata
 Group By artist_name
 )
-SELECT artist_name, popularity,
-case when popularity > 90 then "Top Star"
-Else popularity
-END popularity
-FROM CTE 
+SELECT artist_name, AvgPopularity,
+'Top Star' AS Tag
+FROM CTE
+WHERE AvgPopularity>=90;
 
 
 
