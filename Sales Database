@@ -1,0 +1,51 @@
+--Show Customers (their full names, customer ID, and country) who are not in the US.
+SELECT FirstName, LastName, CustomerId, Country FROM chinook.customers WHERE Country <> 'USA'
+
+
+--Show only the Customers from Brazil.
+SELECT * FROM chinook.customers WHERE Country = 'Brazil'
+
+
+--Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+SELECT t1.FirstName, t1.LastName, t2.InvoiceId, t2.InvoiceDate, t2.BillingCountry
+FROM chinook.customers t1
+INNER JOIN chinook.invoices t2
+WHERE t1.Country = 'Brazil'
+
+
+--Show the Employees who are Sales Agents.
+SELECT * FROM chinook.employees WHERE Title LIKE '%agent%'
+
+
+--Find a unique/distinct list of billing countries from the Invoice table.
+SELECT DISTINCT BillingCountry FROM chinook.invoices
+
+
+--Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+SELECT t2.FirstName, t2.LastName, t1.InvoiceId
+FROM chinook.invoices t1
+INNER JOIN chinook.employees t2
+ON t1.CustomerId = t3.CustomerId
+INNER JOIN chinook.Customers t3
+ON t2.EmployeeId = t3.SupportRepId
+
+
+--Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+SELECT t3.FirstName, t3.LastName, t3.Country, t2.FirstName, t2.LastName, t1.Total
+FROM chinook.invoices t1
+INNER JOIN chinook.employees t2
+ON t1.CustomerId = t3.CustomerId
+INNER JOIN chinook.Customers t3
+ON t2.EmployeeId = t3.SupportRepId
+
+
+--How many Invoices were there in 2009?
+SELECT Count(*)
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
+
+
+--What are the total sales for 2009?
+SELECT ROUND(SUM(Total),2)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
