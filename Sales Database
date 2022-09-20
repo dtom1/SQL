@@ -49,3 +49,18 @@ WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
 SELECT ROUND(SUM(Total),2)
 FROM chinook.Invoices
 WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
+
+
+--Write a query that includes the purchased track name with each invoice line item.
+SELECT t1.name, t2.InvoicelineId 
+FROM chinook.tracks t1
+INNER JOIN invoice_items t2
+on t1.TrackId  = t2.TrackId
+
+
+
+--Write a query that includes the purchased track name AND artist name with each invoice line item.
+SELECT  t2.Name, t2.Composer, t1.InvoiceLineId
+FROM chinook.Invoice_items t1 
+JOIN chinook.Tracks t2 ON t1.TrackId = t2.TrackId
+
