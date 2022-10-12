@@ -88,7 +88,23 @@ Order By TotalRevenue desc
 
 
 
-
+--Provide results for the account numbers, the count of order IDs, product, quantity, price, order date, and location for all orders that were placed in February.
+SELECT
+ T2.acctnum
+,count(T2.order_id) as Orders
+,T1.quantity
+,T1.price
+,T1.orderdate
+,T1.location 
+FROM        FebSales T1
+INNER JOIN  customers T2
+ON T1.orderID = T2.order_id
+GROUP BY 
+T2.acctnum
+,T1.quantity
+,T1.price
+,T1.orderdate
+,T1.location
 
 
 
